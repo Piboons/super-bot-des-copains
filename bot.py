@@ -35,12 +35,16 @@ async def emotes(ctx):
     await ctx.send(retour)
 
 blanquer = ["reform","réform","blanquer"]
-
+regle = ["nouvelle règle","nouvelle regle"]
 @bot.event
 async def on_message(message):
     for bl in blanquer:
         if bl in message.content.lower():
             await message.channel.send("https://cdn.discordapp.com/attachments/736134511930376252/774312797005021214/blanquestre2.gif")
+            break
+    for re in regle:
+        if re in message.content.lower():
+            await message.channel.send("https://cdn.discordapp.com/attachments/605018726416252929/773520458611949568/nouvelle_regle.png")
             break
 
 discordToken = open("secret_discord.txt", "r")

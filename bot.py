@@ -34,5 +34,14 @@ async def emotes(ctx):
         retour += str(cle + ": " + str(valeur) + "\n")
     await ctx.send(retour)
 
+blanquer = ["reform","réform","blanquer"]
+
+@bot.event
+async def on_message(message):
+    for bl in blanquer:
+        if bl in message.content.lower():
+            await message.channel.send("https://cdn.discordapp.com/attachments/736134511930376252/774312797005021214/blanquestre2.gif")
+            break
+
 discordToken = open("secret_discord.txt", "r")
 bot.run(discordToken.read())

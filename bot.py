@@ -38,6 +38,8 @@ blanquer = ["reform","réform","blanquer"]
 regle = ["nouvelle règle","nouvelle regle"]
 @bot.event
 async def on_message(message):
+    if bot.user.mentioned_in(message) and not message.mention_everyone:
+        await message.channel.send("je être en fonctionnement")
     for bl in blanquer:
         if bl in message.content.lower():
             await message.channel.send("https://cdn.discordapp.com/attachments/736134511930376252/774312797005021214/blanquestre2.gif")

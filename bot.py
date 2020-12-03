@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix="!")
+bot = commands.Bot(command_prefix="?")
 
 @bot.event
 async def on_ready():
@@ -38,6 +38,8 @@ blanquer = ["reform","réform","blanquer"]
 regle = ["nouvelle règle","nouvelle regle"]
 @bot.event
 async def on_message(message):
+    if bot.user.mentioned_in(message) and not message.mention_everyone:
+        await message.channel.send("je être en fonctionnement")
     for bl in blanquer:
         if bl in message.content.lower():
             await message.channel.send("https://cdn.discordapp.com/attachments/736134511930376252/774312797005021214/blanquestre2.gif")
@@ -46,6 +48,8 @@ async def on_message(message):
         if re in message.content.lower():
             await message.channel.send("https://cdn.discordapp.com/attachments/605018726416252929/773520458611949568/nouvelle_regle.png")
             break
+    if message.content.lower().endswith("quoi"):
+        await message.channel.send("feur")
 
 discordToken = open("secret_discord.txt", "r")
 bot.run(discordToken.read())

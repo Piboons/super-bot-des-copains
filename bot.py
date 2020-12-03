@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix="!")
+bot = commands.Bot(command_prefix="?")
 
 @bot.event
 async def on_ready():
@@ -48,6 +48,8 @@ async def on_message(message):
         if re in message.content.lower():
             await message.channel.send("https://cdn.discordapp.com/attachments/605018726416252929/773520458611949568/nouvelle_regle.png")
             break
+    if message.content.lower().endswith("quoi"):
+        await message.channel.send("feur")
 
 discordToken = open("secret_discord.txt", "r")
 bot.run(discordToken.read())
